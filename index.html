@@ -17,7 +17,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            padding: 20px 0;
         }
         .container {
             background: #1e293b;
@@ -45,10 +46,6 @@
             color: white;
             font-size: 15px;
             outline: none;
-            transition: border-color 0.3s;
-        }
-        input:focus {
-            border-color: #38bdf8;
         }
         button {
             width: 100%;
@@ -61,10 +58,6 @@
             font-weight: bold;
             cursor: pointer;
             margin-top: 10px;
-            transition: background 0.3s;
-        }
-        button:hover {
-            background: #0369a1;
         }
         #welcomeSection {
             display: none;
@@ -79,16 +72,15 @@
         }
         .menu-box {
             background: #334155;
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 10px;
+            padding: 14px;
+            border-radius: 10px;
+            margin-top: 12px;
             color: #e2e8f0;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .menu-box:hover {
-            background: #475569;
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
     </style>
 </head>
@@ -108,4 +100,40 @@
             <div class="input-group">
                 <input type="text" id="phone" placeholder="Telefon raqamingiz">
             </div>
-            <button onclick="registerStudent()">Kirish</button>
+            <button type="button" onclick="registerStudent()">Kirish</button>
+        </div>
+
+        <!-- Salomlashish va Asosiy Menyu Bo'limi -->
+        <div id="welcomeSection">
+            <div id="greeting"></div>
+            <div class="menu-box">📊 Signallar bo'limi <span>➔</span></div>
+            <div class="menu-box">📝 Mening Savdo Jurnalim <span>➔</span></div>
+            <div class="menu-box">📚 Darsliklar va Kurslar <span>➔</span></div>
+            <div class="menu-box">🧮 Trading Kalkulyator <span>➔</span></div>
+        </div>
+    </div>
+
+    <script>
+        function registerStudent() {
+            const name = document.getElementById('name').value.trim();
+            const surname = document.getElementById('surname').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            if (name === '' || surname === '' || phone === '') {
+                alert('Iltimos, barcha maydonlarni to\'ldiring!');
+                return;
+            }
+
+            // Test uchun xabar
+            alert("Ma'lumot qabul qilindi!");
+
+            // Formani yashirib, salomlashuv va menyuni chiqarish
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('welcomeSection').style.display = 'block';
+            
+            document.getElementById('greeting').innerHTML = `Assalomu alaykum ${name} ${surname}, communityga xush kelibsiz!`;
+        }
+    </script>
+
+</body>
+</html>
